@@ -1,8 +1,19 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import LoginForm from '../components/authentication/LoginForm'
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  useEffect(() => {
+    if (user){
+      console.log("User already logged in")
+      navigate('/')
+    }
+  })
   const handleLogin = async (data) => {
+    localStorage.removeItem("user");
     try {
       const response = await fetch('http://127.0.0.1:5000/users/login', {
         method: 'POST',
@@ -10,15 +21,24 @@ export default function Login() {
           'Content-Type': 'application/json'
         },
         body: data
-        // body:data
       });
-  
-      if (!response.ok) {
-        throw new Error('Failed to log in');
+      const responseData = await response.json();
+      console.log("Response data length is:", Array.isArray(responseData))
+      if (Array.isArray(responseData)) {
+        console.log("An error occured")
+        console.log("The setUser in local storage is: ", JSON.parse(localStorage.getItem('user')))
+      }else{
+        // console.log("Login was succesful")
+        localStorage.setItem("user", JSON.stringify(responseData));
+        console.log("The setUser in local storage is: ", JSON.parse(localStorage.getItem('user')))
+        navigate('/')
+        console.log("It ius now verified")
       }
   
-      const responseData = await response.json();
-      console.log('Login successful', responseData);
+      
+      console.log("Response status is:", response.status)
+      
+      // navigate('/')
       // You can handle the response data here
   
     } catch (error) {

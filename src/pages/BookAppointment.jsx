@@ -1,27 +1,36 @@
 import React, {useState, useEffect} from 'react'
 import AppointmentBookingForm from '../components/appointment/AppointmentBookingForm'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function BookAppointment() {
   const [fetchedServices, setFetchedServices] = useState([])
   const location = useLocation();
   const wantedSpecialist = location.state.provider
+  const navigate = useNavigate()
+  const user = JSON.parse(localStorage.getItem('user'));
   // console.log('Specialist is:', wantedSpecialist)
   useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const response = await fetch('http://127.0.0.1:5000/services');
-        if (!response.ok) {
-          throw new Error('Failed to fetch services');
+    if(!user){
+      console.log("You must be logged in before booking an appointment")
+      navigate('/login')
+    }else{
+      console.log('User Id is:', user.user_id)
+      const fetchServices = async () => {
+        try {
+          const response = await fetch('http://127.0.0.1:5000/services');
+          if (!response.ok) {
+            throw new Error('Failed to fetch services');
+          }
+          const servicesData = await response.json();
+          setFetchedServices(servicesData);
+        } catch (error) {
+          console.error('Error fetching services:', error);
         }
-        const servicesData = await response.json();
-        setFetchedServices(servicesData);
-      } catch (error) {
-        console.error('Error fetching services:', error);
-      }
-    };
-
-    fetchServices();
+      };
+  
+      fetchServices();
+    }
+    
   }, []);
 
   const handleAppointmentFormSubmitted = async(data) => {
@@ -55,6 +64,7 @@ export default function BookAppointment() {
               specialist={wantedSpecialist} 
               availableServices={fetchedServices}
               handleAppointmentFormSubmitted={handleAppointmentFormSubmitted}
+              user={user}
             />
         </section>
     </div>

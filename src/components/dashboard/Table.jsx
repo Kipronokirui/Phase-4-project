@@ -1,7 +1,7 @@
 import React from 'react'
 import { appointments } from './tableData'
 
-export default function Table() {
+export default function Table({}) {
   return (
     <div>
         <div className="flex flex-wrap -mx-3 mb-5">
@@ -46,22 +46,22 @@ export default function Table() {
                                     <thead className="align-bottom">
                                         <tr className="font-semibold text-[0.95rem] text-secondary-dark">
                                             <th className="pb-3 text-start min-w-[175px]">
-                                                Patient
+                                                Healthcare Provider`s Name
                                             </th>
                                             <th className="pb-3 text-end min-w-[100px]">
-                                                Specification
+                                                Service
                                             </th>
                                             <th className="pb-3 text-end min-w-[100px]">
                                                 Date
                                             </th>
                                             <th className="pb-3 pr-12 text-end min-w-[175px]">
-                                                Status
+                                                Time
                                             </th>
-                                            <th className="pb-3 pr-12 text-end min-w-[100px]">
+                                            {/* <th className="pb-3 pr-12 text-end min-w-[100px]">
                                                 DEADLINE
-                                            </th>
+                                            </th> */}
                                             <th className="pb-3 text-end min-w-[50px]">
-                                                DETAILS
+                                                Details
                                             </th>
                                         </tr>
                                     </thead>
@@ -71,21 +71,21 @@ export default function Table() {
                                                 <tr key={index} className="border-b border-dashed last:border-b-0">
                                                     <td className="p-3 pl-0">
                                                         <div className="flex items-center">
-                                                        <div className="relative inline-block shrink-0 rounded-2xl me-3">
+                                                        {/* <div className="relative inline-block shrink-0 rounded-2xl me-3">
                                                             <img 
                                                                 src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/riva-dashboard-tailwind/img/img-49-new.jpg" 
                                                                 className="w-[50px] h-[50px] inline-block shrink-0 rounded-2xl" 
                                                                 alt="" 
                                                             />
-                                                        </div>
+                                                        </div> */}
                                                         <div className="flex flex-col justify-start">
-                                                            <a 
+                                                            <p 
                                                                 href='/#' 
                                                                 className="mb-1 transition-colors duration-200 ease-in-out
                                                                 hover:text-primary font-semibold text-light-inverse text-md/normal"
                                                             > 
                                                                 {appointment.patient_name}
-                                                            </a>
+                                                            </p>
                                                         </div>
                                                         </div>
                                                     </td>
@@ -102,23 +102,16 @@ export default function Table() {
                                                     <td className="p-3 pr-12 text-end">
                                                         <span 
                                                             className={`text-center align-baseline inline-flex px-4 py-3 mr-auto 
-                                                            items-center font-semibold text-[.95rem] leading-none rounded-lg
-                                                            ${
-                                                                appointment.status === 'Completed' ? 'text-black bg-green-200' : 
-                                                                appointment.status === 'Upcoming' ? 'text-black bg-blue-300' : 
-                                                                appointment.status === 'In Progress' ? 'text-black bg-green-400' :
-                                                                appointment.status === 'Cancelled' ? 'text-black bg-red-400' :
-                                                                'text-gray-800 bg-gray-300'
-                                                            } `}
+                                                            items-center font-semibold text-[.95rem] leading-none rounded-lg`}
                                                         > 
-                                                            {appointment.status}
+                                                            08:55
                                                         </span>
                                                     </td>
-                                                    <td className="pr-0 text-start">
+                                                    {/* <td className="pr-0 text-start">
                                                         <span className="font-semibold text-light-inverse text-md/normal">
                                                             2023-08-23
                                                         </span>
-                                                    </td>
+                                                    </td> */}
                                                     <td className="p-3 pr-0 text-end">
                                                         <button 
                                                             className="ml-auto relative text-secondary-dark 
@@ -128,8 +121,8 @@ export default function Table() {
                                                             duration-200 ease-in-out shadow-none border-0 justify-center"
                                                         >
                                                             <span className="flex items-center justify-center p-0 m-0 leading-none shrink-0 ">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                                                                 </svg>
                                                             </span>
                                                         </button>

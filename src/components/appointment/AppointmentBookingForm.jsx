@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { format } from 'date-fns';
 // import { services } from './services';
 
-export default function AppointmentBookingForm({specialist, handleAppointmentFormSubmitted, availableServices}) {
+export default function AppointmentBookingForm({user, specialist, handleAppointmentFormSubmitted, availableServices}) {
   const [date,setDate]=useState(""); 
   const [time, setTime]=useState("");
   const [service, setService]=useState("");
@@ -12,7 +12,7 @@ export default function AppointmentBookingForm({specialist, handleAppointmentFor
     console.log("Appointment Submitted")
     const formattedDate = format(new Date(date), 'dd-MM-yyyy');
     const formData = {
-      username:'mwaita',
+      user_id:user.user_id,
       date:formattedDate,
       time: time,
       service_name:service,

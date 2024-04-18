@@ -12,27 +12,27 @@ import FindSpecialist from './pages/FindSpecialist';
 
 function App() {
   return (
-    <div className="App">
-      <header className='header'>
-        <Navbar />
-      </header>
-      <main className='min-h-screen'>
-        <Router>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/book-appointment' element={<BookAppointment />} />
-            <Route path='/find-specialist' element={<FindSpecialist />} />
-          </Routes>
+    <Router>
+      <div className="App">
+        <header className='header'>
+          <Navbar />
+        </header>
+        <main className='min-h-screen'>
           
-        </Router>
-      </main>
-      <footer>
-        <Footer />
-      </footer>
-    </div>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/dashboard' element={<Dashboard />} />
+              <Route path='/book-appointment' element={<BookAppointment />} />
+              <Route path='/find-specialist' element={<FindSpecialist />} />
+            </Routes>
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
+    </Router>
   );
 }
 
