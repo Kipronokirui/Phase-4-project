@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { format } from 'date-fns';
 // import { services } from './services';
 
 export default function AppointmentBookingForm({specialist, handleAppointmentFormSubmitted, availableServices}) {
@@ -9,9 +10,10 @@ export default function AppointmentBookingForm({specialist, handleAppointmentFor
   const handleAppointmentForm = (e) => {
     e.preventDefault();
     console.log("Appointment Submitted")
+    const formattedDate = format(new Date(date), 'dd-MM-yyyy');
     const formData = {
-      username:'admin',
-      date:date,
+      username:'mwaita',
+      date:formattedDate,
       time: time,
       service_name:service,
       healthcare_provider_name: specialist.name

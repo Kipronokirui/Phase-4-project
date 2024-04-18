@@ -26,6 +26,26 @@ export default function BookAppointment() {
 
   const handleAppointmentFormSubmitted = async(data) => {
     console.log("Appointment form submitted", data)
+    try {
+      const response = await fetch('http://127.0.0.1:5000/appointment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: data
+        // body:data
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to book the appointment');
+      }
+  
+      const responseData = await response.json();
+      console.log('Appointment succesfully booked', responseData);
+      // You can handle the response data here
+    } catch (error) {
+      console.error('Error booking appointment:', error.message);
+    }
   }
   return (
     <div>
