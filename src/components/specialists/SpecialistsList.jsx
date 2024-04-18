@@ -1,16 +1,16 @@
 import React from 'react'
-import { specialists } from './specialists'
+// import { specialists } from './specialists'
 import { useNavigate } from 'react-router-dom';
 // import AppointmentBookingModal from './AppointmentBookingModal'
 
-export default function SpecialistsList() {
+export default function SpecialistsList({providers}) {
     const navigate = useNavigate();
   return (
     <div>
         <section className='grid grid-cols-4 gap-2'>
-            {specialists?.map((specialist, index) => {
+            {providers?.map((provider, index) => {
                 const toAppointmentBooking=()=>{
-                    navigate('/book-appointment',{state:{specialist}});
+                    navigate('/book-appointment',{state:{provider}});
                 }
 
                 return(
@@ -20,21 +20,26 @@ export default function SpecialistsList() {
                         shadow dark:bg-gray-800 dark:border-gray-700"
                     >
                         <div className="flex flex-col items-center pb-10 pt-2">
-                            <img 
+                            {/* <img 
                                 className="w-28 h-28 mb-3 rounded-full shadow-lg" 
-                                src={specialist.profile_picture} 
+                                src={provider.profile_picture} 
                                 alt="Bonnie"
-                            />
+                            /> */}
                             <h5 
                                 className="mb-1 text-xl font-medium text-gray-900 dark:text-white"
                             >
-                                {specialist.name}
+                                {provider.name}
                             </h5>
-                            {/* <span 
+                            <span 
                                 className="text-sm text-gray-500 dark:text-gray-400"
                             >
-                                Visual Designer
-                            </span> */}
+                                Location: {provider.location}
+                            </span>
+                            <span 
+                                className="text-sm text-gray-500 dark:text-gray-400"
+                            >
+                                Contact: {provider.contact}
+                            </span>
                             <div className="flex mt-4 md:mt-6">
                                 <button 
                                     onClick={()=>{toAppointmentBooking()}}
@@ -44,7 +49,7 @@ export default function SpecialistsList() {
                                     focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 
                                     dark:focus:ring-blue-800"
                                 >
-                                    Book This Doctor
+                                    Book This Provider
                                 </button>
                                 {/* <a 
                                     href="/#" 

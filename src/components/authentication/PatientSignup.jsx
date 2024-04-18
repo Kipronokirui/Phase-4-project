@@ -1,13 +1,29 @@
 import React, {useState} from 'react'
 
-export default function PatientSignup() {
+export default function PatientSignup({handleFormSubmit}) {
   const [username,setUsername]=useState("");
   const [email,setEmail]=useState("");
   const [password, setPassword]=useState("");
-  const [birthDate,setBirthDate]=useState(""); 
+  // const [birthDate,setBirthDate]=useState(""); 
+
+  const handlePatientSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = {
+      username:username,
+      email:email,
+      password:password,
+      // birthDate:birthDate
+    }
+
+    const jsonData = JSON.stringify(formData);
+
+    // console.log("Patient Submitted data is:", jsonData)
+    handleFormSubmit(jsonData)
+  }
   return (
     <div>
-      <form>
+      <form onSubmit={handlePatientSubmit}>
         {/* Form starts  */}
         <div className="mt-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -36,7 +52,7 @@ export default function PatientSignup() {
           />
         </div>
 
-        <div className="mt-4">
+        {/* <div className="mt-4">
           <div className="flex justify-between">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Date of Birth
@@ -50,7 +66,7 @@ export default function PatientSignup() {
             w-full appearance-none" 
             type="date" 
           />
-        </div>
+        </div> */}
 
         <div className="mt-4">
           <div className="flex justify-between">
@@ -73,7 +89,7 @@ export default function PatientSignup() {
             className="bg-gray-700 text-white font-bold py-2 px-4 w-full 
             rounded hover:bg-gray-600"
           >
-            Login
+            Sign Up
           </button>
         </div>
         <div className="mt-4 flex items-center justify-between">

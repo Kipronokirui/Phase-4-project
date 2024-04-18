@@ -29,13 +29,13 @@ export default function Hero() {
                         you need.
                     </p>
                     <a 
-                        href="/#" 
+                        href="/find-specialist" 
                         className="inline-flex items-center justify-center px-5 py-3 mr-3 
                         text-base font-medium text-center text-white rounded-lg bg-blue-700 
                         hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 
                         dark:focus:ring-blue-900"
                     >
-                        Get started
+                        Find a Specialist
                         <svg 
                             className="w-5 h-5 ml-2 -mr-1" 
                             fill="currentColor" 
@@ -48,7 +48,7 @@ export default function Hero() {
                             clip-rule="evenodd"></path>
                         </svg>
                     </a>
-                    <a 
+                    {/* <a 
                         href="/#" 
                         className="inline-flex items-center justify-center px-5 py-3 text-base font-medium 
                         text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 
@@ -56,7 +56,7 @@ export default function Hero() {
                         dark:hover:bg-gray-700 dark:focus:ring-gray-800"
                     >
                         Book an Appointment
-                    </a> 
+                    </a>  */}
                 </div>
                 <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
                     <img 

@@ -1,13 +1,31 @@
 import React, {useState} from 'react'
 
-export default function HealthCareProviderSignup() {
+export default function HealthCareProviderSignup({handleFormSubmit}) {
     const [name,setName]=useState("");
     const [email,setEmail]=useState("");
     const [password, setPassword]=useState("");
     const [contact,setContact]=useState(""); 
+    const [location,setLocation]=useState("");
+
+    const handleHealthcareProviderSubmit = (e) => {
+      e.preventDefault();
+
+      const formData = {
+        name:name,
+        email:email,
+        password:password,
+        contact:contact,
+        location:location
+      }
+
+      const jsonData = JSON.stringify(formData);
+
+      // console.log('Healthcare provider datya are:', jsonData)
+      handleFormSubmit(jsonData)
+    }
   return (
     <div>
-      <form>
+      <form onSubmit={handleHealthcareProviderSubmit}>
         {/* Form starts  */}
         <div className="mt-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -55,6 +73,22 @@ export default function HealthCareProviderSignup() {
         <div className="mt-4">
           <div className="flex justify-between">
             <label className="block text-gray-700 text-sm font-bold mb-2">
+              Location
+            </label>
+          </div>
+          <input 
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            className="bg-gray-200 text-gray-700 focus:outline-none 
+            focus:shadow-outline border border-gray-300 rounded py-2 px-4 block 
+            w-full appearance-none" 
+            type="contact" 
+          />
+        </div>
+
+        <div className="mt-4">
+          <div className="flex justify-between">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
               Password
             </label>
           </div>
@@ -73,7 +107,7 @@ export default function HealthCareProviderSignup() {
             className="bg-gray-700 text-white font-bold py-2 px-4 w-full 
             rounded hover:bg-gray-600"
           >
-            Login
+            Sign Up
           </button>
         </div>
         <div className="mt-4 flex items-center justify-between">

@@ -4,6 +4,50 @@ import HealthCareProviderSignup from '../components/authentication/HealthCarePro
 
 export default function Register() {
     const [userType, setUserType] = useState('patient');
+
+    const handleFormSubmit = async (data) =>{
+
+        if (userType === 'patient') {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/users/signup', {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: data
+                });
+
+                if (!response.ok) {
+                    throw new Error('Sign Up failed');
+                }
+
+                const responseData = await response.json();
+                console.log('Registration successful', responseData);
+            } catch (error) {
+                console.error('Error logging in:', error.message);
+            }
+        } else if (userType === 'doctor'){
+            console.log('Doctor has submitted his data', data)
+            try {
+                const response = await fetch('http://127.0.0.1:5000/healthcare_provider/signup', {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: data
+                });
+
+                if (!response.ok) {
+                    throw new Error('Sign Up failed');
+                }
+
+                const responseData = await response.json();
+                console.log('Registration successful', responseData);
+            } catch (error) {
+                console.error('Error logging in:', error.message);
+            }
+        }
+    }
   return (
     <div>
         <div className="py-16">
@@ -22,7 +66,7 @@ export default function Register() {
                                 Sign Up as Patient
                             </h2>
                             <p 
-                                className="text-xl text-gray-600 text-center cursor-pointer"
+                                className="mt-2 text-xl text-blue-600 text-center cursor-pointer hover:text-blue-800"
                                 onClick={() => setUserType('doctor')}
                             >
                                 Are you a doctor?
@@ -34,7 +78,7 @@ export default function Register() {
                                 Sign Up as Doctor
                             </h2>
                             <p 
-                                className="text-xl text-gray-600 text-center cursor-pointer"
+                                className="mt-2 text-xl text-blue-600 text-center cursor-pointer hover:text-blue-800"
                                 onClick={() => setUserType('patient')}
                             >
                                 Register as a Client
@@ -55,18 +99,20 @@ export default function Register() {
                             </h1>
                         </div>
                     </div> */}
-                    <div className="mt-4 flex items-center justify-between">
+
+                    {/* <div className="mt-4 flex items-center justify-between">
                       <span className="border-b w-1/5 lg:w-1/4"></span>
                       <a href="/#" className="text-xs text-center text-gray-500 uppercase">
                         or login with email
                       </a>
                       <span className="border-b w-1/5 lg:w-1/4"></span>
-                  </div>
+                    </div> */}
+
                   {/* Form starts */}
                   {userType === 'patient' ? 
-                    <PatientSignup /> 
+                    <PatientSignup handleFormSubmit={handleFormSubmit}/> 
                     : 
-                    <HealthCareProviderSignup />
+                    <HealthCareProviderSignup handleFormSubmit={handleFormSubmit}/>
                     }
                   
                   {/* Form ends  */}
