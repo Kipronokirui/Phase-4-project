@@ -55,7 +55,7 @@ export default function Hero() {
                         focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 
                         dark:hover:bg-gray-700 dark:focus:ring-gray-800"
                     >
-                        Speak to Sales
+                        Book an Appointment
                     </a> 
                 </div>
                 <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">

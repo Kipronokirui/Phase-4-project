@@ -31,8 +31,8 @@ export default function Navbar() {
                         </a>
                     </li>
                     <li className="md:px-4 md:py-2 hover:text-indigo-400">
-                        <a href='#!'>
-                            Search
+                        <a href='/find-specialist'>
+                            Find Specialist
                         </a>
                     </li>
                     <li className="md:px-4 md:py-2 hover:text-indigo-400">
