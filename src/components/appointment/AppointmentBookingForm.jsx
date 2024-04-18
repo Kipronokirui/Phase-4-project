@@ -12,7 +12,7 @@ export default function AppointmentBookingForm({user, specialist, handleAppointm
     console.log("Appointment Submitted")
     const formattedDate = format(new Date(date), 'dd-MM-yyyy');
     const formData = {
-      user_id:user.user_id,
+      username:user.username,
       date:formattedDate,
       time: time,
       service_name:service,
