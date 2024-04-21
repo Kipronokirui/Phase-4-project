@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import PatientSignup from '../components/authentication/PatientSignup'
 import HealthCareProviderSignup from '../components/authentication/HealthCareProviderSignup';
+import cartoon from '../assets/cartoon.png'
 
 export default function Register() {
     const [userType, setUserType] = useState('patient');
@@ -55,7 +56,7 @@ export default function Register() {
               <div 
                 className="hidden lg:block lg:w-1/2 bg-cover"
                 style={{
-                  backgroundImage: "url('https://images.unsplash.com/photo-1546514714-df0ccc50d7bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80')"
+                  backgroundImage: `url(${cartoon})`
                 }}
               >
               </div>
