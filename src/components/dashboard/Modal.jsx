@@ -29,14 +29,29 @@ export default function Modal({isOpen, setIsOpen, data}) {
                 {/* <!-- Modal body --> */}
                 <div className="p-4 md:p-5 space-y-4">
                     <div>
-                        <p>
-                            Date: {data.date}
+                        <p className='flex items-center space-x-2 mb-2'>
+                            <span className='font-semibold text-lg'>Healthcare Provider:</span> 
+                            <span className='text-base leading-relaxed text-gray-500 dark:text-gray-400'>
+                                {data.healthcare_provider_name}
+                            </span>
                         </p>
-                        <p>
-                            Time: {data.time}
+                        <p className='flex items-center space-x-2 mb-2'>
+                            <span className='font-semibold text-lg'>Date:</span> 
+                            <span className='text-base leading-relaxed text-gray-500 dark:text-gray-400'>
+                                {data.date}
+                            </span>
                         </p>
-                        <p>
-                            Specification: {data.specification}
+                        <p className='flex items-center space-x-2 mb-2'>
+                            <span className='font-semibold text-lg'>Time: </span>
+                            <span className='text-base leading-relaxed text-gray-500 dark:text-gray-400'>
+                                {data.time}
+                            </span>
+                        </p>
+                        <p className='flex items-center space-x-2 mb-2'>
+                            <span className='font-semibold text-lg'>Service: </span>
+                            <span className='text-base leading-relaxed text-gray-500 dark:text-gray-400'>
+                                {data.service_name}
+                            </span>
                         </p>
                     </div>
                 </div>

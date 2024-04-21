@@ -32,11 +32,13 @@ export default function Login() {
 
       if (Array.isArray(responseData)) {
         console.log("An error occured")
+        toast.info("An error occured")
         console.log("The setUser in local storage is: ", JSON.parse(localStorage.getItem('user')))
       }else{
         // console.log("Login was succesful")
         localStorage.setItem("user", JSON.stringify(responseData));
         console.log("The setUser in local storage is: ", JSON.parse(localStorage.getItem('user')))
+        toast.info("Login succesful")
         navigate('/')
         console.log("It ius now verified")
       }
@@ -49,6 +51,7 @@ export default function Login() {
   
     } catch (error) {
       console.error('Error logging in:', error.message);
+      toast.info(`Error logging in`)
       // Handle errors here
     }
   };

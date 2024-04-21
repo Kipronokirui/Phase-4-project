@@ -13,6 +13,7 @@ import ToastPage from './pages/ToastPage';
 
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import HealthcareProviderLogin from './pages/HealthcareProviderLogin';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/login' element={<Login />} />
+              <Route path='/login/healthcare-provider' element={<HealthcareProviderLogin />} />
               <Route path='/register' element={<Register />} />
               <Route path='/dashboard' element={<Dashboard />} />
               <Route path='/book-appointment' element={<BookAppointment />} />

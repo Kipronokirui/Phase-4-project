@@ -24,8 +24,8 @@ export default function Footer() {
                             Find a Specialist
                     </a>
                     <a
-                        className="my-3 block" href="/login">
-                            Login
+                        className="my-3 block" href="/login/healthcare-provider">
+                            Login as Healthcare Provider
                     </a>
                     <a
                         className="my-3 block" href="/register">
