@@ -2,6 +2,8 @@ import React, {useEffect} from 'react'
 import LoginForm from '../components/authentication/LoginForm'
 import { useNavigate } from 'react-router-dom';
 
+import { toast } from 'react-toastify';
+
 export default function Login() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
@@ -9,9 +11,12 @@ export default function Login() {
   useEffect(() => {
     if (user){
       console.log("User already logged in")
+      toast.info("You are already logged in!")
+
       navigate('/')
     }
   })
+
   const handleLogin = async (data) => {
     localStorage.removeItem("user");
     try {
@@ -24,6 +29,7 @@ export default function Login() {
       });
       const responseData = await response.json();
       console.log("Response data length is:", Array.isArray(responseData))
+
       if (Array.isArray(responseData)) {
         console.log("An error occured")
         console.log("The setUser in local storage is: ", JSON.parse(localStorage.getItem('user')))

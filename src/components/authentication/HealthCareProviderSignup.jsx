@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { toast } from 'react-toastify';
 
 export default function HealthCareProviderSignup({handleFormSubmit}) {
     const [name,setName]=useState("");
@@ -10,6 +11,33 @@ export default function HealthCareProviderSignup({handleFormSubmit}) {
     const handleHealthcareProviderSubmit = (e) => {
       e.preventDefault();
 
+      if(!name){
+        toast.error("Name is required", {
+          autoClose: 2000
+        })
+        return name;
+      }else if(!email){
+        toast.error("Email is required", {
+          autoClose: 2000
+        })
+        return email;
+      }else if(!contact){
+        toast.error("Your contact is required", {
+          autoClose: 2000
+        })
+        return contact;
+      }else if(!location){
+        toast.error("Location is required", {
+          autoClose: 2000
+        })
+        return location;
+      }else if(!password){
+        toast.error("Password is required", {
+          autoClose: 2000
+        })
+        return password;
+      }
+
       const formData = {
         name:name,
         email:email,
@@ -20,9 +48,9 @@ export default function HealthCareProviderSignup({handleFormSubmit}) {
 
       const jsonData = JSON.stringify(formData);
 
-      // console.log('Healthcare provider datya are:', jsonData)
       handleFormSubmit(jsonData)
     }
+
   return (
     <div>
       <form onSubmit={handleHealthcareProviderSubmit}>

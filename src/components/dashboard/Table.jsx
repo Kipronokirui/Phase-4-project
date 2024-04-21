@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { appointments } from './tableData'
+import Modal from './Modal'
 
-export default function Table({}) {
+export default function Table() {
+    let [isOpen, setIsOpen] = useState(false)
+    const [modalData, setModalData] = useState(null);
   return (
     <div>
         <div className="flex flex-wrap -mx-3 mb-5">
@@ -114,6 +117,10 @@ export default function Table({}) {
                                                     </td> */}
                                                     <td className="p-3 pr-0 text-end">
                                                         <button 
+                                                            onClick={() => {
+                                                                setIsOpen(true)
+                                                                setModalData(appointment)
+                                                            }}
                                                             className="ml-auto relative text-secondary-dark 
                                                             bg-light-dark hover:text-primary flex items-center h-[25px] 
                                                             w-[25px] text-base font-medium leading-normal text-center 
@@ -125,12 +132,19 @@ export default function Table({}) {
                                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                                                                 </svg>
                                                             </span>
+                                                            Details
                                                         </button>
                                                     </td>
                                                 </tr>
                                             )
                                         })}
                                     </tbody>
+                                    <div></div>
+                                    <Modal 
+                                        isOpen={isOpen}
+                                        setIsOpen={setIsOpen}
+                                        data={modalData}
+                                    />
                                 </table>
                             </div>
                         </div>

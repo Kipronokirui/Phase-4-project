@@ -9,6 +9,10 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import BookAppointment from './pages/BookAppointment';
 import FindSpecialist from './pages/FindSpecialist';
+import ToastPage from './pages/ToastPage';
+
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -18,7 +22,7 @@ function App() {
           <Navbar />
         </header>
         <main className='min-h-screen'>
-          
+          <ToastContainer />
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/login' element={<Login />} />
@@ -26,6 +30,7 @@ function App() {
               <Route path='/dashboard' element={<Dashboard />} />
               <Route path='/book-appointment' element={<BookAppointment />} />
               <Route path='/find-specialist' element={<FindSpecialist />} />
+              <Route path='/toast' element={<ToastPage />} />
             </Routes>
         </main>
         <footer>

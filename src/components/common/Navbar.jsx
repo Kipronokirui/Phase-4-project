@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function Navbar() {
     const navigate = useNavigate();
@@ -7,7 +8,7 @@ export default function Navbar() {
 
     const handleLogout = () => {
         localStorage.removeItem("user");
-        console.log("User Succesfully removed")
+        toast("You are succesfully logged out!")
         navigate("/")
     }
   return (

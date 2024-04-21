@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { toast } from 'react-toastify';
 
 export default function LoginForm({handleLogin}) {
   const [username,setUsername]=useState(""); 
@@ -6,6 +7,18 @@ export default function LoginForm({handleLogin}) {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
+
+    if(!username){
+      toast.error("Username is required", {
+        autoClose: 2000
+      })
+      return username;
+    }else if(!password){
+      toast.error("Password is required", {
+        autoClose: 2000
+      })
+      return password;
+    }
     
     const formData = {
       username: username,

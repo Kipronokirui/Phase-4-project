@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { toast } from 'react-toastify';
 
 export default function PatientSignup({handleFormSubmit}) {
   const [username,setUsername]=useState("");
@@ -8,6 +9,23 @@ export default function PatientSignup({handleFormSubmit}) {
 
   const handlePatientSubmit = (e) => {
     e.preventDefault();
+
+    if(!username){
+      toast.error("Username is required", {
+        autoClose: 2000
+      })
+      return username;
+    }else if(!email){
+      toast.error("Email is required", {
+        autoClose: 2000
+      })
+      return email;
+    }else if(!password){
+      toast.error("Your password is required", {
+        autoClose: 2000
+      })
+      return password;
+    }
 
     const formData = {
       username:username,

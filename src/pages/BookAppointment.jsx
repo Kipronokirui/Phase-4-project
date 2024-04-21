@@ -1,17 +1,21 @@
 import React, {useState, useEffect} from 'react'
 import AppointmentBookingForm from '../components/appointment/AppointmentBookingForm'
 import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function BookAppointment() {
   const [fetchedServices, setFetchedServices] = useState([])
+  const [loading, setLoading] = useState(false)
   const location = useLocation();
   const wantedSpecialist = location.state.provider
   const navigate = useNavigate()
   const user = JSON.parse(localStorage.getItem('user'));
+  
   // console.log('Specialist is:', wantedSpecialist)
   useEffect(() => {
     if(!user){
-      console.log("You must be logged in before booking an appointment")
+      // console.log("You must be logged in before booking an appointment")
+      toast.info("You must be logged in before booking an appointment")
       navigate('/login')
     }else{
       console.log('User Id is:', user.user_id)
@@ -36,23 +40,34 @@ export default function BookAppointment() {
   const handleAppointmentFormSubmitted = async(data) => {
     console.log("Appointment form submitted", data)
     try {
+      setLoading(true)
       const response = await fetch('http://127.0.0.1:5000/appointment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: data
-        // body:data
       });
 
       if (!response.ok) {
+        setLoading(false)
         throw new Error('Failed to book the appointment');
       }
   
       const responseData = await response.json();
+
       console.log('Appointment succesfully booked', responseData);
+
+      toast.success('Appointment succesfully booked', {
+        autoClose: 2000
+      })
+
+      setLoading(false)
+
+      navigate('/dashboard')
       // You can handle the response data here
     } catch (error) {
+      setLoading(false)
       console.error('Error booking appointment:', error.message);
     }
   }
@@ -65,6 +80,7 @@ export default function BookAppointment() {
               availableServices={fetchedServices}
               handleAppointmentFormSubmitted={handleAppointmentFormSubmitted}
               user={user}
+              loading={loading}
             />
         </section>
     </div>

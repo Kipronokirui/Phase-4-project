@@ -1,15 +1,34 @@
 import React, {useState} from 'react'
 import { format } from 'date-fns';
 // import { services } from './services';
+import { toast } from 'react-toastify';
 
-export default function AppointmentBookingForm({user, specialist, handleAppointmentFormSubmitted, availableServices}) {
+export default function AppointmentBookingForm({loading, user, specialist, handleAppointmentFormSubmitted, availableServices}) {
   const [date,setDate]=useState(""); 
   const [time, setTime]=useState("");
   const [service, setService]=useState("");
 
   const handleAppointmentForm = (e) => {
     e.preventDefault();
-    console.log("Appointment Submitted")
+
+    // toast.info(`Username is ${user.user_name}`)
+    if(!date){
+      toast.error("Please select date", {
+        autoClose: 2000
+      })
+      return date;
+    }else if(!time){
+      toast.error("Please select time", {
+        autoClose: 2000
+      })
+      return time;
+    }else if (!service) {
+      toast.error("Service is required", {
+        autoClose: 2000
+      })
+      return service
+    }
+
     const formattedDate = format(new Date(date), 'dd-MM-yyyy');
     const formData = {
       username:user.user_name,
@@ -106,10 +125,19 @@ export default function AppointmentBookingForm({user, specialist, handleAppointm
                     <div>
                         <button
                           type='submit'
-                          className="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 
-                          text-center text-base font-semibold text-white outline-none"
+                          className={`hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 
+                          text-center text-base font-semibold text-white outline-none`}
                         >
-                            Book Appointment
+                          {loading ? (
+                            <>
+                              Please wait....
+                            </>
+                          ) : (
+                            <>
+                              Book Appointment
+                            </>
+                          )}
+                            
                         </button>
                     </div>
                 </form>
