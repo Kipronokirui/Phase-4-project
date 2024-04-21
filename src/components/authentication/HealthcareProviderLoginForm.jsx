@@ -102,8 +102,8 @@ export default function HealthcareProviderLoginForm({handleLogin}) {
 
                   <div className="mt-4 flex items-center justify-between">
                       <span className="border-b w-1/5 md:w-1/4"></span>
-                      <a href="/login/healthcare-provider" className="text-xs text-gray-500 uppercase">
-                        Are you an Healthcare Provider?
+                      <a href="/login" className="text-xs text-gray-500 uppercase">
+                        Sign In as Client
                       </a>
                       <span className="border-b w-1/5 md:w-1/4"></span>
                   </div>

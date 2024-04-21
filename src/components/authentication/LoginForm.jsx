@@ -99,6 +99,14 @@ export default function LoginForm({handleLogin}) {
                       </a>
                       <span className="border-b w-1/5 md:w-1/4"></span>
                   </div>
+
+                  <div className="mt-4 flex items-center justify-between">
+                      <span className="border-b w-1/5 md:w-1/4"></span>
+                      <a href="/login/healthcare-provider" className="text-xs text-gray-500 uppercase">
+                        Are you a Doctor? Sign in here
+                      </a>
+                      <span className="border-b w-1/5 md:w-1/4"></span>
+                  </div>
               </form>
           </div>
       </div>
