@@ -22,7 +22,9 @@ function App() {
           <Navbar />
         </header>
         <main className='min-h-screen'>
-          <ToastContainer />
+          <ToastContainer 
+            autoClose={2000}
+          />
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/login' element={<Login />} />
