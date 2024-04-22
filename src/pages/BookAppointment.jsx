@@ -21,7 +21,7 @@ export default function BookAppointment() {
       console.log('User Id is:', user.user_id)
       const fetchServices = async () => {
         try {
-          const response = await fetch('http://127.0.0.1:5000/services');
+          const response = await fetch('https://medi-scheduler-app.onrender.com/services');
           if (!response.ok) {
             throw new Error('Failed to fetch services');
           }
@@ -41,7 +41,7 @@ export default function BookAppointment() {
     console.log("Appointment form submitted", data)
     try {
       setLoading(true)
-      const response = await fetch('http://127.0.0.1:5000/appointment', {
+      const response = await fetch('https://medi-scheduler-app.onrender.com/appointment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -10,7 +10,7 @@ export default function Register() {
 
         if (userType === 'patient') {
             try {
-                const response = await fetch('http://127.0.0.1:5000/users/signup', {
+                const response = await fetch('https://medi-scheduler-app.onrender.com/users/signup', {
                     method: 'POST',
                     headers: {
                     'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ export default function Register() {
         } else if (userType === 'doctor'){
             console.log('Doctor has submitted his data', data)
             try {
-                const response = await fetch('http://127.0.0.1:5000/healthcare_provider/signup', {
+                const response = await fetch('https://medi-scheduler-app.onrender.com/healthcare_provider/signup', {
                     method: 'POST',
                     headers: {
                     'Content-Type': 'application/json'

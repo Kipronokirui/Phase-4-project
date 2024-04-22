@@ -20,7 +20,7 @@ export default function HealthcareProviderLogin() {
     const handleLogin = async (data) => {
         localStorage.removeItem("user");
         try {
-          const response = await fetch('http://127.0.0.1:5000/Healthcare_provider/login', {
+          const response = await fetch('https://medi-scheduler-app.onrender.com/Healthcare_provider/login', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

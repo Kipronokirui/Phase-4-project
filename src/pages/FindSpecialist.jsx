@@ -8,7 +8,7 @@ export default function FindSpecialist() {
     console.log("Fetching providers")
     const fetchData = async () => {
       try {
-          const response = await fetch('http://127.0.0.1:5000/healthcare_providers');
+          const response = await fetch('https://medi-scheduler-app.onrender.com/healthcare_providers');
           const data = await response.json();
           setFetchedProviders(data);
       } catch (error) {

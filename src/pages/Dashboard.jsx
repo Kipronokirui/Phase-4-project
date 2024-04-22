@@ -18,7 +18,7 @@ export default function Dashboard() {
         // fetchUserAppointments()
         const fetchUserAppointments = async () => {
           try {
-            const response = await fetch(`http://127.0.0.1:5000/appointments/${user.user_id}`);
+            const response = await fetch(`https://medi-scheduler-app.onrender.com/appointments/${user.user_id}`);
             if (!response.ok) {
               throw new Error('Failed to fetch services');
             }
@@ -35,7 +35,7 @@ export default function Dashboard() {
         // fetchHealthcareProviderAppointments()
         const fetchHealthcareProviderAppointments = async () => {
           try {
-            const response = await fetch(`http://127.0.0.1:5000/appointments/healthcare/${user.user_id}`);
+            const response = await fetch(`https://medi-scheduler-app.onrender.com/appointments/healthcare/${user.user_id}`);
             if (!response.ok) {
               throw new Error('Failed to fetch services');
             }
